@@ -13,18 +13,35 @@
             $('#jurusan').val('');
             $('#id').val('');
         });
-
+        //Modal Create Mata kuliah
+        $('.tombolTambahDataMK').on('click', function() {
+            $('#formModalLabel').html('Tambah Data Mata Kuliah');
+            $('.modal-footer button[type=submit]').html('Tambah Data');
+            $('#kode_mk').val('');
+            $('#nama_mk').val('');
+            $('#sks').val('');
+            $('#id').val('');
+        });
+        //Modal Create Mata kuliah Mahasiswa
+        $('.tombolTambahDataMKMHS').on('click', function() {
+            $('#formModalLabel').html('Tambah Data Mata Kuliah');
+            $('.modal-footer button[type=submit]').html('Tambah Data');
+            $('#kode_mk').val('');
+            $('#nama_mk').val('');
+            $('#sks').val('');
+            $('#id').val('');
+        });
 
         $('.tampilModalUbah').on('click', function() {
 
             $('#formModalLabel').html('Ubah Data Mahasiswa');
             $('.modal-footer button[type=submit]').html('Ubah Data');
-            $('.modal-body form').attr('action', '<?= BASE_URL; ?>/mahasiswa/ubah');
+            $('.modal-body form').attr('action', '<?= BASEURL; ?>/mahasiswa/ubah');
 
             const id = $(this).data('id');
 
             $.ajax({
-                url: '<?= BASE_URL; ?>/mahasiswa/getubah',
+                url: '<?= BASEURL; ?>/mahasiswa/getubah',
                 data: {
                     id: id
                 },
@@ -35,6 +52,31 @@
                     $('#nrp').val(data.nrp);
                     $('#email').val(data.email);
                     $('#jurusan').val(data.jurusan);
+                    $('#id').val(data.id);
+                }
+            });
+
+        });
+        //Modal update Mata kuliah
+        $('.tampilModalUbahMK').on('click', function() {
+
+            $('#formModalLabel').html('Ubah Data Mata Kuliah');
+            $('.modal-footer button[type=submit]').html('Ubah Data');
+            $('.modal-body form').attr('action', '<?= BASEURL; ?>/matakuliah/ubah');
+
+            const id = $(this).data('id');
+
+            $.ajax({
+                url: '<?= BASEURL; ?>/matakuliah/getubah',
+                data: {
+                    id: id
+                },
+                method: 'post',
+                dataType: 'json',
+                success: function(data) {
+                    $('#kode_mk').val(data.kode_mk);
+                    $('#nama_mk').val(data.nama_mk);
+                    $('#sks').val(data.sks);
                     $('#id').val(data.id);
                 }
             });
