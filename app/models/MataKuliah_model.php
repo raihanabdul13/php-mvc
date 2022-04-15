@@ -53,7 +53,7 @@ class MataKuliah_model
 
     public function ubahDataMatakuliah($data)
     {
-        $query = "UPDATE matakuliah SET
+        $query = "UPDATE krs SET
                     kode_mk = :kode_mk,
                     nama_mk = :nama_mk,
                     sks = :sks

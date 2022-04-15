@@ -24,11 +24,11 @@
         });
         //Modal Create Mata kuliah Mahasiswa
         $('.tombolTambahDataMKMHS').on('click', function() {
-            $('#formModalLabel').html('Tambah Data Mata Kuliah');
+            $('#formModalLabel').html('Tambah Data Mata Kuliah Mahasiswa');
             $('.modal-footer button[type=submit]').html('Tambah Data');
-            $('#kode_mk').val('');
-            $('#nama_mk').val('');
-            $('#sks').val('');
+            $('#id_mk').val('');
+            $('#id_mhs').val('');
+            $('#nilai').val('');
             $('#id').val('');
         });
 
@@ -77,6 +77,30 @@
                     $('#kode_mk').val(data.kode_mk);
                     $('#nama_mk').val(data.nama_mk);
                     $('#sks').val(data.sks);
+                    $('#id').val(data.id);
+                }
+            });
+
+        });
+        //Modal update Mata kuliah Mahasiswa
+        $('.tampilModalUbahMKMHS').on('click', function() {
+            $('#formModalLabel').html('Ubah Data Mata Kuliah Mahasiswa');
+            $('.modal-footer button[type=submit]').html('Ubah Data');
+            $('.modal-body form').attr('action', '<?= BASEURL; ?>/mkmhs/ubah');
+
+            const id = $(this).data('id');
+
+            $.ajax({
+                url: '<?= BASEURL; ?>/mkmhs/getubah',
+                data: {
+                    id: id
+                },
+                method: 'post',
+                dataType: 'json',
+                success: function(data) {
+                    $('#id_mhs').val(data.id_mhs);
+                    $('#id_mk').val(data.id_mk);
+                    $('#nilai').val(data.nilai);
                     $('#id').val(data.id);
                 }
             });
