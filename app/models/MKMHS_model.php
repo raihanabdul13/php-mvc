@@ -85,4 +85,12 @@ class MKMHS_model
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
     }
+    public function getMKMHSByMhs($id){
+        $this->db->query(
+            'SELECT k.*, m.id as mhs, m.nama, m.nrp,m.jurusan,mk.id as mk, mk.kode_mk, mk.nama_mk, mk.sks 
+            FROM krs as k JOIN mahasiswa as m ON k.id_mhs = m.id JOIN matakuliah as mk ON k.id_mk = mk.id
+            WHERE k.id_mhs = :id');
+        $this->db->bind('id', $id);
+        return $this->db->resultSet();
+    }
 }

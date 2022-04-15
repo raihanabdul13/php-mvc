@@ -77,17 +77,17 @@
           <input type="hidden" name="id" id="id">
           <div class="form-group">
             <label for="id_mhs">Mahasiswa :</label>
-            <select class="form-control" id="id_mhs" name="id_mhs">
+            <select class="form-control" id="id_mhs" name="id_mhs" required>
                 <?php $i=1; foreach( $data['mahasiswa'] as $mhs ) : ?>
-                    <option value="<?=$mhs['id']?>"><?=$i?>. <?=$mhs['nama']?></option>
+                    <option value="<?=$mhs['id']?>"><?=$i++?>. <?=$mhs['nama']?></option>
                 <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
             <label for="id_mk">Mata Kuliah :</label>
-            <select class="form-control" id="id_mk" name="id_mk">
+            <select class="form-control" id="id_mk" name="id_mk" required>
                 <?php $i=1; foreach( $data['matakuliah'] as $mk ) : ?>
-                    <option value="<?=$mk['id']?>"><?=$i?>. <?=$mk['nama_mk']?></option>
+                    <option value="<?=$mk['id']?>"><?=$i++?>. <?=$mk['nama_mk']?></option>
                 <?php endforeach; ?>
             </select>
           </div>
